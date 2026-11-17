@@ -1,0 +1,6 @@
+{
+  "name": "MusicPlayer Desktop Engine & Suite",
+  "description": "Production-grade multithreaded desktop audio player for Windows with custom data structures, SQLite persistence, ID3 parser, and interactive simulator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

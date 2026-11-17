@@ -1,0 +1,37 @@
+# Node / Web build artifacts
+node_modules/
+build/
+dist/
+coverage/
+.env*
+!.env.example
+
+# Java / Maven / jpackage build artifacts
+music-player/target/
+music-player/dist/
+music-player/input_jar/
+music-player/dependency-reduced-pom.xml
+*.class
+*.jar
+*.exe
+*.msi
+
+# IDE & OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# Excluded Presentation, Report, PDF/PPTX Generators & LaTeX Sources
+*.pptx
+*.pdf
+*.zip
+generate_deck.py
+implementation_report.html
+DTM project
+overleaf_project/
+report_assets/
+report_src/
+report_tools/
+SRMIST Tiruchirappalli - Project Report Latex Format/

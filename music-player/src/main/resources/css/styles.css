@@ -1,0 +1,380 @@
+/* ==========================================================================
+   MusicPlayer Windows 11 Fluent Dark Stylesheet
+   ========================================================================== */
+
+.root {
+    -fx-font-family: 'Segoe UI Variable', 'Segoe UI', -apple-system, sans-serif;
+    -fx-background-color: #0f1117;
+    -fx-text-fill: #f3f4f6;
+}
+
+/* --- Left Sidebar --- */
+.sidebar {
+    -fx-background-color: #141721;
+    -fx-border-color: transparent #232736 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 16 12 16 12;
+}
+
+.sidebar-title {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 12 8;
+}
+
+.sidebar-category-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 16 8 6 8;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-padding: 8 12;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #1e2230;
+    -fx-text-fill: #f8fafc;
+}
+
+.sidebar-button:pressed, .sidebar-button.active {
+    -fx-background-color: #2b3044;
+    -fx-text-fill: #38bdf8;
+    -fx-font-weight: bold;
+}
+
+/* --- Center Content Area --- */
+.content-area {
+    -fx-background-color: #0f1117;
+    -fx-padding: 24 28 20 28;
+}
+
+.header-banner {
+    -fx-padding: 0 0 20 0;
+}
+
+.library-heading {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.library-subtext {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+}
+
+/* --- Search Field --- */
+.search-field {
+    -fx-background-color: #1a1e2d;
+    -fx-background-radius: 8;
+    -fx-border-color: #2c3247;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: #f8fafc;
+    -fx-prompt-text-fill: #64748b;
+    -fx-font-size: 13px;
+    -fx-padding: 7 12 7 12;
+}
+
+.search-field:focused {
+    -fx-border-color: #38bdf8;
+    -fx-background-color: #202638;
+}
+
+/* --- Action Buttons --- */
+.action-button {
+    -fx-background-color: #1e2436;
+    -fx-background-radius: 8;
+    -fx-border-color: #2d344d;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 7 14;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #2a324a;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #3e4868;
+}
+
+.action-button-primary {
+    -fx-background-color: #0284c7;
+    -fx-background-radius: 8;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 7 16;
+    -fx-cursor: hand;
+}
+
+.action-button-primary:hover {
+    -fx-background-color: #0ea5e9;
+}
+
+/* --- TableView (Track List) --- */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #232736;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #141721;
+    -fx-background-radius: 8 8 0 0;
+    -fx-border-color: transparent transparent #232736 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 38px;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #161922 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-cell-size: 52px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #11141c;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #1a1e2b;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #1e293b;
+}
+
+.table-cell {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 12 0 12;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #38bdf8;
+    -fx-font-weight: 600;
+}
+
+/* --- Bottom Playback Bar --- */
+.playback-bar {
+    -fx-background-color: #131620;
+    -fx-border-color: #232736 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 12 24 12 24;
+}
+
+.now-playing-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.now-playing-artist {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+
+.time-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+    -fx-font-family: 'Consolas', 'Courier New', monospace;
+}
+
+/* --- Playback Control Buttons --- */
+.control-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 6 10;
+    -fx-background-radius: 50;
+}
+
+.control-button:hover {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #1e2333;
+}
+
+.control-button-play {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #0f1117;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 16;
+    -fx-background-radius: 50;
+}
+
+.control-button-play:hover {
+    -fx-background-color: #38bdf8;
+    -fx-text-fill: #0f1117;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.control-button.active {
+    -fx-text-fill: #38bdf8;
+}
+
+/* --- Sliders (Seek & Volume) --- */
+.slider .track {
+    -fx-background-color: #282e42;
+    -fx-background-radius: 4;
+    -fx-pref-height: 4px;
+}
+
+.slider:hover .track {
+    -fx-pref-height: 6px;
+}
+
+.slider .thumb {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-pref-width: 12px;
+    -fx-pref-height: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}
+
+.slider:hover .thumb {
+    -fx-background-color: #38bdf8;
+    -fx-pref-width: 14px;
+    -fx-pref-height: 14px;
+}
+
+/* --- Scrollbars --- */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #2b3144;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #3e4661;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+}
+
+/* Remove the white filler block to the right of the last column header */
+.table-view .column-header-background .filler,
+.table-view .column-header-background .show-hide-columns-button,
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+
+/* --- Grouped list (Artists / Albums) --- */
+.group-list {
+    -fx-background-color: transparent;
+    -fx-border-color: #232736;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.group-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #161922 transparent;
+    -fx-padding: 12 16 12 16;
+    -fx-cursor: hand;
+}
+
+.group-list .list-cell:hover {
+    -fx-background-color: #1a1e2b;
+}
+
+.group-list .list-cell:selected {
+    -fx-background-color: #1e293b;
+}
+
+.group-list .list-cell:empty {
+    -fx-border-color: transparent;
+}
+
+/* --- Favourite heart (player bar) --- */
+.favourite-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 22px;
+    -fx-padding: 4 8 4 8;
+    -fx-cursor: hand;
+    -fx-background-radius: 50;
+}
+
+.favourite-button:hover {
+    -fx-text-fill: #ffffff;
+    -fx-scale-x: 1.15;
+    -fx-scale-y: 1.15;
+}
+
+.favourite-button:disabled {
+    -fx-opacity: 0.35;
+}
+
+.favourite-button.liked,
+.favourite-button.liked:hover {
+    -fx-text-fill: #ef4444;
+    -fx-effect: dropshadow(gaussian, rgba(239,68,68,0.55), 8, 0.2, 0, 0);
+}
+
+/* --- Album Art Thumbnails & Fallbacks --- */
+.now-playing-art-box {
+    -fx-background-color: linear-gradient(to bottom right, #1e293b, #141926);
+    -fx-background-radius: 8;
+    -fx-border-color: #2d364d;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.thumb-box {
+    -fx-background-color: linear-gradient(to bottom right, #1e293b, #141926);
+    -fx-background-radius: 6;
+    -fx-border-color: #283147;
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+}
+
+.art-fallback-icon {
+    -fx-text-fill: #38bdf8;
+    -fx-font-size: 22px;
+}
+
+.art-fallback-icon-sm {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 15px;
+}
+

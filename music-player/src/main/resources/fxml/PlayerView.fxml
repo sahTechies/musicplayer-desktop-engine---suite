@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" prefHeight="760.0" prefWidth="1180.0"
+            stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.musicplayer.controller.PlayerController">
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox prefWidth="230.0" styleClass="sidebar" spacing="6.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="16.0" right="12.0" bottom="16.0" left="12.0"/>
+            </padding>
+
+            <!-- Brand Logo / Wordmark -->
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label text="🎵 MusicPlayer" styleClass="sidebar-title" />
+            </HBox>
+
+            <Separator prefWidth="200.0" opacity="0.15" />
+
+            <!-- Library Navigation Group -->
+            <Label text="LIBRARY" styleClass="sidebar-category-label" />
+            <Button fx:id="btnNavAllTracks" maxWidth="Infinity" styleClass="sidebar-button, active" text="♫  All Tracks" onAction="#handleNavAllTracks" />
+            <Button fx:id="btnNavArtists" maxWidth="Infinity" styleClass="sidebar-button" text="👤  Artists" onAction="#handleNavArtists" />
+            <Button fx:id="btnNavAlbums" maxWidth="Infinity" styleClass="sidebar-button" text="💿  Albums" onAction="#handleNavAlbums" />
+            <Button fx:id="btnNavFavourites" maxWidth="Infinity" styleClass="sidebar-button" text="♥  Favourites" onAction="#handleNavFavourites" />
+            <Button fx:id="btnNavNowPlaying" maxWidth="Infinity" styleClass="sidebar-button" text="▶  Active Queue" onAction="#handleNavQueue" />
+
+            <!-- Playlists Navigation Group -->
+            <HBox alignment="CENTER_LEFT" spacing="6.0">
+                <Label text="PLAYLISTS" styleClass="sidebar-category-label" HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnNewPlaylist" text="+" styleClass="control-button" onAction="#handleNewPlaylist" />
+            </HBox>
+
+            <ListView fx:id="playlistListView" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+
+            <!-- System / Storage Status Footer -->
+            <VBox spacing="4.0" style="-fx-padding: 8 4 0 4;">
+                <Label fx:id="lblStorageStatus" text="SQLite: Connected" style="-fx-text-fill: #475569; -fx-font-size: 11px;" />
+                <Label fx:id="lblTrackCount" text="0 tracks indexed" style="-fx-text-fill: #475569; -fx-font-size: 11px;" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- CENTER MAIN CONTENT -->
+    <center>
+        <VBox styleClass="content-area" spacing="12.0" BorderPane.alignment="CENTER">
+
+            <!-- Top Header & Action Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="14.0">
+                <Button fx:id="btnBackToGroups" text="← All Artists" styleClass="action-button"
+                        onAction="#handleBackToGroups" visible="false" managed="false" />
+                <VBox HBox.hgrow="ALWAYS" spacing="2.0">
+                    <Label fx:id="lblViewTitle" text="Music Library" styleClass="library-heading" />
+                    <Label fx:id="lblViewSubtitle" text="All local tracks loaded in SQLite database" styleClass="library-subtext" />
+                </VBox>
+
+                <!-- Search Input with Live Filter -->
+                <TextField fx:id="searchField" promptText="Search title, artist, album..." prefWidth="240.0" styleClass="search-field" />
+
+                <!-- Action Buttons (Library Mode) -->
+                <Button fx:id="btnAddFiles" text="+ Add Files" styleClass="action-button-primary" onAction="#handleAddFiles" />
+                <Button fx:id="btnAddFolder" text="📁 Add Folder" styleClass="action-button" onAction="#handleAddFolder" />
+                <Button fx:id="btnRescan" text="🔄 Rescan" styleClass="action-button" onAction="#handleRescan" />
+
+                <!-- Playlist-only buttons (shown only while a playlist is open) -->
+                <Button fx:id="btnPlayPlaylist" text="▶ Play Playlist" styleClass="action-button-primary"
+                        onAction="#handlePlayPlaylist" visible="false" managed="false" />
+                <Button fx:id="btnAddSongsToPlaylist" text="➕ Add Songs" styleClass="action-button"
+                        onAction="#handleAddSongsToPlaylist" visible="false" managed="false" />
+            </HBox>
+
+            <!-- TableView for Song List -->
+            <TableView fx:id="songsTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colIndex" prefWidth="50.0" text="#" />
+                    <TableColumn fx:id="colTitle" prefWidth="340.0" text="TITLE" />
+                    <TableColumn fx:id="colArtist" prefWidth="200.0" text="ARTIST" />
+                    <TableColumn fx:id="colAlbum" prefWidth="200.0" text="ALBUM" />
+                    <TableColumn fx:id="colDuration" prefWidth="90.0" text="DURATION" />
+                    <TableColumn fx:id="colPlays" prefWidth="70.0" text="PLAYS" />
+                </columns>
+                <placeholder>
+                    <VBox fx:id="tablePlaceholder" alignment="CENTER" spacing="12.0">
+                        <Label fx:id="lblPlaceholderMain" text="No tracks in library yet."
+                               style="-fx-text-fill: #64748b; -fx-font-size: 15px;" />
+                        <Label fx:id="lblPlaceholderSub" text="Click '+ Add Files' or '📁 Add Folder' to import music."
+                               style="-fx-text-fill: #475569; -fx-font-size: 13px;" />
+                    </VBox>
+                </placeholder>
+            </TableView>
+
+            <!-- Grouped view (Artists / Albums): one row per group, click to open -->
+            <ListView fx:id="groupListView" VBox.vgrow="ALWAYS" styleClass="group-list" visible="false" managed="false" />
+
+            <!-- Status Banner (Offloaded Scan Tasks Feedback) -->
+            <HBox fx:id="statusBanner" alignment="CENTER_LEFT" spacing="10.0" style="-fx-padding: 4 0 0 0;">
+                <Label fx:id="lblTaskStatus" text="Ready" style="-fx-text-fill: #64748b; -fx-font-size: 12px;" />
+                <ProgressBar fx:id="taskProgressBar" prefWidth="180.0" visible="false" />
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- BOTTOM PERSISTENT PLAYBACK BAR -->
+    <bottom>
+        <HBox alignment="CENTER" styleClass="playback-bar" spacing="20.0" BorderPane.alignment="CENTER">
+
+            <!-- ZONE 1: Currently Playing Info & Album Art -->
+            <HBox alignment="CENTER_LEFT" prefWidth="310.0" spacing="12.0">
+                <StackPane prefHeight="54.0" prefWidth="54.0" minHeight="54.0" minWidth="54.0"
+                           maxHeight="54.0" maxWidth="54.0" styleClass="now-playing-art-box">
+                    <Label fx:id="lblNowPlayingArtFallback" text="♫" styleClass="art-fallback-icon" />
+                    <ImageView fx:id="imgAlbumArt" fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" smooth="true" visible="false" />
+                </StackPane>
+                <VBox alignment="CENTER_LEFT" spacing="2.0">
+                    <Label fx:id="lblNowPlayingTitle" text="No track selected" styleClass="now-playing-title" maxWidth="170.0" />
+                    <Label fx:id="lblNowPlayingArtist" text="Choose a song to begin playback" styleClass="now-playing-artist" maxWidth="170.0" />
+                </VBox>
+                <!-- Heart: add / remove the playing song from Favourites (red when liked) -->
+                <Button fx:id="btnFavourite" text="♡" styleClass="favourite-button" onAction="#handleToggleFavourite" disable="true" />
+            </HBox>
+
+            <!-- ZONE 2: Central Controls & Scrub Seek Bar -->
+            <VBox alignment="CENTER" spacing="6.0" HBox.hgrow="ALWAYS" maxWidth="640.0">
+                <!-- Buttons Row -->
+                <HBox alignment="CENTER" spacing="16.0">
+                    <Button fx:id="btnShuffle" text="🔀" styleClass="control-button" onAction="#handleToggleShuffle" />
+                    <Button fx:id="btnPrevious" text="⏮" styleClass="control-button" onAction="#handlePrevious" />
+                    <Button fx:id="btnPlayPause" text="▶" styleClass="control-button-play" onAction="#handleTogglePlayPause" />
+                    <Button fx:id="btnStop" text="⏹" styleClass="control-button" onAction="#handleStop" />
+                    <Button fx:id="btnNext" text="⏭" styleClass="control-button" onAction="#handleNext" />
+                    <Button fx:id="btnRepeat" text="🔁" styleClass="control-button" onAction="#handleToggleRepeat" />
+                </HBox>
+
+                <!-- Seek Slider Row -->
+                <HBox alignment="CENTER" spacing="10.0">
+                    <Label fx:id="lblElapsedTime" text="00:00" styleClass="time-label" />
+                    <Slider fx:id="seekSlider" HBox.hgrow="ALWAYS" min="0.0" max="100.0" value="0.0" />
+                    <Label fx:id="lblTotalDuration" text="00:00" styleClass="time-label" />
+                </HBox>
+            </VBox>
+
+            <!-- ZONE 3: Volume & Utility Controls -->
+            <HBox alignment="CENTER_RIGHT" prefWidth="260.0" spacing="10.0">
+                <Button fx:id="btnMute" text="🔊" styleClass="control-button" onAction="#handleToggleMute" />
+                <Slider fx:id="volumeSlider" prefWidth="110.0" min="0.0" max="1.0" value="0.8" />
+                <Button fx:id="btnQueueDrawer" text="📑" styleClass="control-button" onAction="#handleToggleQueueDrawer" />
+            </HBox>
+        </HBox>
+    </bottom>
+
+</BorderPane>
