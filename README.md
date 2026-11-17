@@ -4,7 +4,7 @@
 
 [![Java](https://img.shields.io/badge/Java-21%20LTS-007396?logo=openjdk)](music-player/pom.xml)
 [![JavaFX](https://img.shields.io/badge/JavaFX-21.0.2-4285F4)](music-player/pom.xml)
-[![SQLite](https://img.shields.io/badge/SQLite-3.45.1%20(WAL)-003B57?logo=sqlite)](music-player/src/main/java/com/musicplayer/database/DatabaseManager.java)
+[![SQLite](https://img.shields.io/badge/SQLite-3.45.1%20%28WAL%29-003B57?logo=sqlite)](music-player/src/main/java/com/musicplayer/database/DatabaseManager.java)
 [![React](https://img.shields.io/badge/Web%20Lab-React%2019%20%2B%20TypeScript-61DAFB?logo=react)](package.json)
 
 ---
@@ -89,7 +89,7 @@ Standard array-backed lists (`ArrayList`) incur $O(n)$ shifting overhead when in
 - **`removeNode(LinkedListNode<Song>)`**: Unlinks any node directly via `prev`/`next` references and removes its key from `pathIndex` in **$O(1)$**.
 - **`getNext()` / `getPrevious()`**: Advances or steps backward in **$O(1)$** with optional `repeatAll` wrap-around.
 
-#### Empirical Queue Benchmark (`PlaybackQueue` vs. `ArrayList`, from [`bench.json`](report_assets/bench.json) / Report Chapter 4)
+#### Empirical Queue Benchmark (`PlaybackQueue` vs. `ArrayList`, Report Chapter 4 Benchmarks)
 
 | Queue Size ($n$) | DLL 1,000 *Play Next* (ms) | `ArrayList.add(mid)` 1,000× (ms) | DLL 200 Removals (ms) | `ArrayList.remove(Object)` 200× (ms) |
 | :---: | :---: | :---: | :---: | :---: |
